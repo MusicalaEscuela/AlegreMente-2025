@@ -1,95 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>AlegreMente 2025 - Inicio</title>
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 80px auto 40px;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        img.logo {
-            position: absolute;
-            top: -60px;
-            left: 20px;
-            width: 100px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .menu {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .menu a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-        .menu a:hover {
-            background-color: #0056b3;
-        }
-        .copyright {
-            font-size: 13px;
-            color: #888;
-            text-align: center;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>AlegreMente 2025 - Inicio</title>
+  <link rel="icon" href="logo.jpg" type="image/jpeg">
+  <style>
+    :root {
+      --primary: #007BFF;
+      --primary-dark: #0056b3;
+      --bg: #f7f7f9;
+      --text: #333;
+      --muted: #666;
+      --card: #fff;
+      --radius: 14px;
+      --shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* espacio entre logos */
+      padding: 12px 25px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header img {
+      height: 60px; /* controla altura sin cortar */
+      width: auto;  /* mantiene proporción */
+      object-fit: contain;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 50px auto;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px 50px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--text);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 20px 0 30px 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .menu {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .menu a {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .menu a:hover {
+      background: var(--primary-dark);
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+      margin: 40px 0 10px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="logo.jpg" alt="Logo Musicala" class="logo">
+  <header>
+    <img src="logo.jpg" alt="Logo Musicala">
+    <img src="LOGO FSA.png" alt="Logo Fundación San Antonio">
+  </header>
 
-        <h1>Bienvenidos a AlegreMente 2025</h1>
+  <main class="container">
+    <h1>Bienvenidos a AlegreMente 2025</h1>
 
-        <p><strong>AlegreMente</strong> es una obra colectiva y transformadora de las Casas Kiwa de la Fundación San Antonio, donde los niños, niñas y adolescentes exploran el mundo a través del arte.</p>
+    <p><strong>AlegreMente</strong> es una obra colectiva y transformadora de las Casas Kiwa de la Fundación San Antonio, donde los niños, niñas y adolescentes exploran el mundo a través del arte.</p>
 
-        <p>En esta experiencia artística, <em>cada niño lleva un mapa invisible</em>… y es el arte quien lo dibuja. El viaje de Sofía nos conduce por una serie de estaciones escénicas donde se tejen identidad, memoria, cuerpo, comunidad, imaginación y alegría.</p>
+    <p>En esta experiencia artística, <em>cada niño lleva un mapa invisible</em>… y es el arte quien lo dibuja. El viaje de Sofía nos conduce por una serie de estaciones escénicas donde se tejen identidad, memoria, cuerpo, comunidad, imaginación y alegría.</p>
 
-        <p>Esta plataforma permite:</p>
-        <ul>
-            <li>Ver el resumen de cada escena</li>
-            <li>Consultar qué centros participan y en qué lenguaje</li>
-            <li>Registrar avances de montaje, ensayos y materiales</li>
-            <li>Descargar o enlazar recursos (canciones, escenografía, vestuario)</li>
-        </ul>
+    <p>Esta plataforma permite:</p>
+    <ul>
+      <li>Ver el resumen de cada escena</li>
+      <li>Consultar qué centros participan y en qué lenguaje</li>
+      <li>Registrar avances de montaje, ensayos y materiales</li>
+      <li>Descargar o enlazar recursos (canciones, escenografía, vestuario)</li>
+    </ul>
 
-        <div class="menu">
-            <a href="https://musicalaescuela.github.io/menuescenasalegremente2025/">Ver Escenas</a>
-            <a href="registro.html">Registrar Avance</a>
-            <a href="materiales.html">Materiales y Canciones</a>
-        </div>
-
-        <p class="copyright">© 2025 Musicala. Todos los derechos reservados.</p>
+    <div class="menu">
+      <a href="https://musicalaescuela.github.io/menuescenasalegremente2025/">Ver Escenas</a>
     </div>
+  </main>
+
+  <footer>
+    © 2025 Musicala · Todos los derechos reservados
+  </footer>
 
 </body>
 </html>
-
