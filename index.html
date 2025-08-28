@@ -1,142 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>AlegreMente 2025 - Inicio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cronograma de Ensayos – AlegreMente 2025</title>
+
+  <!-- Fuente moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <link rel="icon" href="logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Hotfixes + ajustes solicitados -->
   <style>
-    :root {
-      --primary: #007BFF;
-      --primary-dark: #0056b3;
-      --bg: #f7f7f9;
-      --text: #333;
-      --muted: #666;
-      --card: #fff;
-      --radius: 14px;
-      --shadow: 0 4px 14px rgba(0,0,0,0.1);
+    /* 1) Ocultar puntos azules de la línea de tiempo */
+    .timeline .marks{ display:none !important; }
+
+    /* 2) Mensaje cuando no hay filas en la tabla (por ejemplo al elegir un día sin eventos) */
+    .tablewrap:has(tbody:empty)::after{
+      content: "No hay eventos hoy.";
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px; color: var(--muted); font-size: 14px;
     }
 
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 20px; /* espacio entre logos */
-      padding: 12px 25px;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    header img {
-      height: 60px; /* controla altura sin cortar */
-      width: auto;  /* mantiene proporción */
-      object-fit: contain;
-    }
-
-    .container {
-      max-width: 880px;
-      margin: 50px auto;
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 40px 50px;
-    }
-
-    h1 {
-      text-align: center;
-      color: var(--text);
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-      text-align: justify;
-    }
-
-    ul {
-      margin: 20px 0 30px 20px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .menu {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .menu a {
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .menu a:hover {
-      background: var(--primary-dark);
-    }
-
-    footer {
-      text-align: center;
-      color: #999;
-      font-size: 0.9rem;
-      margin: 40px 0 10px;
-    }
+    /* 3) Hacer más pequeño el texto del KPI del día y de la próxima fecha */
+    .kpis .k:nth-child(2) .v{ font-size:18px; line-height:1.1; }
+    .kpis .k:nth-child(3) .v{ font-size:18px; line-height:1.1; }
+    /* Para evitar desbordes en títulos largos de día/fecha */
+    .k .v{ word-break:break-word; overflow-wrap:anywhere; }
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
-    <img src="logo.jpg" alt="Logo Musicala">
-    <img src="LOGO FSA.png" alt="Logo Fundación San Antonio">
+    <div class="head wrap">
+      <img src="logo.jpg" alt="Logo Musicala" class="logo" onerror="this.style.display='none'">
+      <div>
+        <h1 class="h1">Cronograma de Ensayos – AlegreMente 2025</h1>
+        <div class="sub">Hoy es <span id="hoyHeader">—</span>. No hay ensayos previos registrados.</div>
+      </div>
+      <div class="spacer"></div>
+      <button id="btnPrint" class="iconbtn" title="Imprimir">
+        <span class="icon">🖨️</span> Imprimir
+      </button>
+    </div>
   </header>
 
-  <main class="container">
-    <h1>Bienvenidos a AlegreMente 2025</h1>
+  <main class="wrap">
+    <!-- Columna izquierda: Fechas clave -->
+    <section class="card">
+      <h2 class="title"><span class="dot dot-brand"></span>Fechas clave</h2>
 
-    <p><strong>AlegreMente</strong> es una obra colectiva y transformadora de las Casas Kiwa de la Fundación San Antonio, donde los niños, niñas y adolescentes exploran el mundo a través del arte.</p>
+      <div class="toolbar">
+        <div class="chips">
+          <span class="chip info">Obra: <b id="obraFechaTxt">—</b></span>
+          <span class="chip ok">Ensayos confirmados: <b id="countConfirmados">0</b></span>
+          <span class="chip warn">Pendientes: <b id="countPendientes">0</b></span>
+        </div>
+        <div class="spacer"></div>
+      </div>
 
-    <p>En esta experiencia artística, <em>cada niño lleva un mapa invisible</em>… y es el arte quien lo dibuja. El viaje de Sofía nos conduce por una serie de estaciones escénicas donde se tejen identidad, memoria, cuerpo, comunidad, imaginación y alegría.</p>
+      <!-- KPIs con progress ring -->
+      <div class="kpis">
+        <div class="k ring">
+          <svg viewBox="0 0 36 36" aria-hidden="true">
+            <path d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+            <path id="ringProgress" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" fill="none" stroke="#a5b4fc" stroke-width="4" stroke-linecap="round" stroke-dasharray="0 100"/>
+          </svg>
+          <div>
+            <div class="v" id="kFaltan">—</div>
+            <div class="l">Días para la obra</div>
+          </div>
+        </div>
+        <div class="k">
+          <div class="v" id="kObraDOW">—</div>
+          <div class="l">Día de la semana</div>
+        </div>
+        <div class="k">
+          <div class="v" id="kProximo">—</div>
+          <div class="l">Próxima fecha</div>
+        </div>
+      </div>
 
-    <p>Esta plataforma permite:</p>
-    <ul>
-      <li>Ver el resumen de cada escena</li>
-      <li>Consultar qué centros participan y en qué lenguaje</li>
-      <li>Registrar avances de montaje, ensayos y materiales</li>
-      <li>Descargar o enlazar recursos (canciones, escenografía, vestuario)</li>
-    </ul>
+      <!-- Línea de tiempo -->
+      <div class="timeline">
+        <div class="line"></div>
+        <div class="marks" id="marks"></div>
+        <div class="labelrow">
+          <span id="lblStart">Hoy</span><span id="lblEnd">Obra</span>
+        </div>
+      </div>
 
-    <div class="menu">
-      <a href="https://musicalaescuela.github.io/menuescenasalegremente2025/" target="_blank">Ver Escenas</a>
-      <a href="https://musicalaescuela.github.io/estudiantesalegremente2025/" target="_blank">Listas de estudiantes</a>
-      <a href="https://musicalaescuela.github.io/ensayosalegremente2025/" target="_blank">Cronograma de ensayos</a>
-      <a href="https://musicalaescuela.github.io/rideralegremente2025/" target="_blank">Rider técnico</a>
-    </div>
+      <!-- Lista -->
+      <div class="list" id="listaFechas"></div>
 
+      <!-- Mini calendario -->
+      <div class="mini-cal">
+        <div class="cal-head">
+          <button class="viewbtn" id="calPrev">◀</button>
+          <div><b id="calTitle">—</b></div>
+          <button class="viewbtn" id="calNext">▶</button>
+        </div>
+        <div class="cal-grid" id="calDows"></div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+
+      <div class="legend">
+        <span class="pill info">programado</span>
+        <span class="pill ok">confirmado</span>
+        <span class="pill warn">pendiente</span>
+      </div>
+
+      <div class="foot">Hoy es <span id="hoyTxt">—</span>.</div>
+    </section>
+
+    <!-- Columna derecha: Programación por centros -->
+    <section class="card">
+      <h2 class="title"><span class="dot dot-alt"></span>Programación por Centros</h2>
+      <p class="sub">
+        Los ensayos se cargan automáticamente desde el archivo oficial en Google Sheets.
+      </p>
+
+      <!-- Filtros -->
+      <div class="filters">
+        <label class="sr-only" for="fCentro">Centro</label>
+        <select id="fCentro" onchange="renderTabla();updateSummaryChips();"></select>
+
+        <label class="sr-only" for="fDesde">Desde</label>
+        <input type="date" id="fDesde" onchange="renderTabla();updateSummaryChips();">
+
+        <label class="sr-only" for="fHasta">Hasta</label>
+        <input type="date" id="fHasta" onchange="renderTabla();updateSummaryChips();">
+
+        <label class="sr-only" for="fEstado">Estado</label>
+        <select id="fEstado" onchange="renderTabla();updateSummaryChips();">
+          <option value="">Todos los estados</option>
+          <option value="programado">Programado</option>
+          <option value="confirmado">Confirmado</option>
+          <option value="pendiente">Pendiente</option>
+        </select>
+
+        <label class="sr-only" for="fArea">Área</label>
+        <select id="fArea" onchange="renderTabla();updateSummaryChips();">
+          <option value="">Todas las áreas</option>
+        </select>
+
+        <!-- Botón “Filtrar” eliminado -->
+        <button class="viewbtn" id="btnLimpiar">Limpiar</button>
+        <div class="spacer"></div>
+      </div>
+
+      <!-- Resumen de filtros -->
+      <div class="summary" id="summaryChips"></div>
+
+      <!-- Solo tabla -->
+      <div class="tablewrap" id="viewTabla" role="region" aria-label="Tabla de programación">
+        <table>
+          <thead>
+            <tr>
+              <th>Centro</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Responsable</th>
+              <th>Asistentes</th>
+              <th>Estado</th>
+              <th>Jornada</th>
+              <th>Área</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyCentros"></tbody>
+        </table>
+      </div>
+      <!-- El mensaje de “No hay eventos hoy.” se pinta con CSS cuando el tbody está vacío -->
+    </section>
   </main>
 
-  <footer>
-    © 2025 Musicala · Todos los derechos reservados
-  </footer>
-
+  <!-- JS externo -->
+  <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
