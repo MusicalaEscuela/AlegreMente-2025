@@ -1,117 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>AlegreMente 2025 - Inicio</title>
-  <link rel="icon" href="logo.jpg" type="image/jpeg">
-  <style>
-    :root {
-      --primary: #007BFF;
-      --primary-dark: #0056b3;
-      --bg: #f7f7f9;
-      --text: #333;
-      --muted: #666;
-      --card: #fff;
-      --radius: 14px;
-      --shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
 
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 0;
-    }
+  <!-- Favicon -->
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
 
-    header {
-      display: flex;
-      align-items: center;
-      gap: 20px; /* espacio entre logos */
-      padding: 12px 25px;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+  <!-- Hoja de estilos separada -->
+  <link rel="stylesheet" href="style.css" />
 
-    header img {
-      height: 60px; /* controla altura sin cortar */
-      width: auto;  /* mantiene proporción */
-      object-fit: contain;
-    }
-
-    .container {
-      max-width: 880px;
-      margin: 50px auto;
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 40px 50px;
-    }
-
-    h1 {
-      text-align: center;
-      color: var(--text);
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-      text-align: justify;
-    }
-
-    ul {
-      margin: 20px 0 30px 20px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .menu {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .menu a {
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .menu a:hover {
-      background: var(--primary-dark);
-    }
-
-    footer {
-      text-align: center;
-      color: #999;
-      font-size: 0.9rem;
-      margin: 40px 0 10px;
-    }
-  </style>
+  <!-- Script (si se necesita comportamiento adicional) -->
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <header>
-    <img src="logo.jpg" alt="Logo Musicala">
-    <img src="LOGO FSA.png" alt="Logo Fundación San Antonio">
+  <!-- ====== Encabezado ====== -->
+  <header class="site-header">
+    <img src="logo.jpg" alt="Logo Musicala" class="logo" onerror="this.style.display='none'">
+    <img src="LOGO FSA.png" alt="Logo Fundación San Antonio" class="logo" onerror="this.style.display='none'">
   </header>
 
+  <!-- ====== Contenido principal ====== -->
   <main class="container">
     <h1>Bienvenidos a AlegreMente 2025</h1>
 
-    <p><strong>AlegreMente</strong> es una obra colectiva y transformadora de las Casas Kiwa de la Fundación San Antonio, donde los niños, niñas y adolescentes exploran el mundo a través del arte.</p>
-
-    <p>En esta experiencia artística, <em>cada niño lleva un mapa invisible</em>… y es el arte quien lo dibuja. El viaje de Sofía nos conduce por una serie de estaciones escénicas donde se tejen identidad, memoria, cuerpo, comunidad, imaginación y alegría.</p>
+    <!-- Intro reescrita según lo solicitado -->
+    <p>
+      <strong>AlegreMente</strong> es un evento desarrollado por la
+      <strong>Fundación San Antonio (FSA)</strong>. Este año,
+      <strong>AlegreMente</strong> será el marco para la presentación de la obra inédita
+      <strong>El Viaje de Sofía</strong>, creada por el equipo artístico que acompaña a la FSA junto con las niñas, niños y
+      adolescentes participantes. Esta plataforma reúne herramientas y enlaces para la gestión
+      artística y logística del proyecto.
+    </p>
 
     <p>Esta plataforma permite:</p>
     <ul>
@@ -121,16 +43,117 @@
       <li>Descargar o enlazar recursos (canciones, escenografía, vestuario)</li>
     </ul>
 
+    <!-- Menú a otras páginas (se conserva) -->
     <div class="menu">
-      <a href="https://musicalaescuela.github.io/menuescenasalegremente2025/" target="_blank">Ver Escenas</a>
-      <a href="https://musicalaescuela.github.io/estudiantesalegremente2025/" target="_blank">Listas de estudiantes</a>
-      <a href="https://musicalaescuela.github.io/ensayosalegremente2025/" target="_blank">Cronograma de ensayos</a>
-      <a href="https://musicalaescuela.github.io/rideralegremente2025/" target="_blank">Rider técnico</a>
+      <a href="https://musicalaescuela.github.io/menuescenasalegremente2025/" target="_blank" rel="noopener">Ver Escenas</a>
+      <a href="https://musicalaescuela.github.io/estudiantesalegremente2025/" target="_blank" rel="noopener">Listas de estudiantes</a>
+      <a href="https://musicalaescuela.github.io/ensayosalegremente2025/" target="_blank" rel="noopener">Cronograma de ensayos</a>
+      <a href="https://musicalaescuela.github.io/rideralegremente2025/" target="_blank" rel="noopener">Rider técnico</a>
     </div>
-
   </main>
 
-  <footer>
+  <!-- ====== Sección: El Viaje de Sofía (nueva) ====== -->
+  <section id="viaje-sofia" aria-labelledby="t-viaje">
+    <div class="wrap">
+      <header class="vs-header">
+        <img src="LOGO FSA.png" alt="FSA" class="vs-logo" onerror="this.style.display='none'">
+        <div class="vs-titles">
+          <h2 id="t-viaje">El Viaje de Sofía – Resumen oficial</h2>
+          <p class="vs-sub">Obra inédita creada por Musicala junto a niñas, niños y adolescentes</p>
+        </div>
+      </header>
+
+      <!-- Resumen general + imagen de historieta -->
+      <div class="vs-grid">
+        <div class="vs-text">
+          <h3>Resumen general</h3>
+          <p>
+            Sofía inicia su recorrido en un mundo donde “el sol no canta”: la alegría se apagó y su voz
+            parece ausente. Guiada por el arte —música, danza, teatro y artes visuales— atraviesa ocho
+            estaciones. En cada una recupera un derecho esencial: el cuidado de su cuerpo, la risa, la
+            fuerza de lo colectivo, la palabra propia, la memoria, la imaginación y el gozo de estar viva.
+          </p>
+          <p>
+            La obra promueve la autonomía corporal, el consentimiento y el acompañamiento protector de la
+            comunidad, como claves de prevención y cuidado de la niñez. El viaje concluye celebrando la vida
+            en común y el orgullo de pertenecer a una tierra que canta.
+          </p>
+        </div>
+
+        <figure class="vs-image">
+          <img src="Resumen historieta.jpg" alt="Resumen ilustrado de El Viaje de Sofía">
+          <figcaption>Ilustración de referencia — solo imagen, sin textos.</figcaption>
+        </figure>
+      </div>
+
+      <!-- Resumen por escenas -->
+      <div class="vs-escenas">
+        <h3>Resumen por escenas</h3>
+        <div class="vs-card">
+          <ol>
+            <li>
+              <b>El Sol no canta / Mi cuerpo es solo mío.</b>
+              El inicio muestra un mundo apagado, donde Sofía entiende que para seguir adelante necesita
+              reconocerse dueña de su propio cuerpo. Aquí nace la luz de la autonomía y el derecho a poner límites.
+            </li>
+            <li>
+              <b>Buenos Aires del alma / Mango Tango.</b>
+              Después del silencio, Sofía redescubre la risa y el movimiento. Esta estación enseña que la alegría
+              vital no se impone: se recupera cuando hay confianza y libertad para sentir.
+            </li>
+            <li>
+              <b>Carnaval / Pueblo Tambor – Siyahamba.</b>
+              Sofía reconoce que no camina sola. El tambor y el carnaval revelan la fuerza del “nosotros”, el valor
+              de la comunidad y el acompañamiento como formas de protección.
+            </li>
+            <li>
+              <b>Ciudad Rima / Happy Blues.</b>
+              Aquí Sofía aprende que nombrar las emociones no la hace frágil. La tristeza, cuando se convierte en
+              palabra, poesía y música, se transforma en dignidad y memoria compartida.
+            </li>
+            <li>
+              <b>Montaña Trenza / Vivo en un país.</b>
+              Sofía asciende a lo profundo de sus raíces. Descubre que su identidad está trenzada por abuelos,
+              familias, pueblos y paisajes. Comprende que la historia personal se fortalece al reconocerse parte
+              de una memoria colectiva.
+            </li>
+            <li>
+              <b>Tierra Imaginaria.</b>
+              Este lugar sin reglas le devuelve el poder de soñar. Sofía recupera la imaginación como derecho:
+              la posibilidad de inventar mundos es también una forma de libertad y resistencia.
+            </li>
+            <li>
+              <b>Isla Alegría / Merengue del primer dedo.</b>
+              El cuerpo de Sofía ya no es solo territorio de cuidado, sino también de gozo. Aprender a moverse
+              con placer reafirma que habitar el cuerpo con alegría es parte esencial de la vida.
+            </li>
+            <li>
+              <b>Colombia Tierra Querida.</b>
+              El viaje culmina en una celebración colectiva. Sofía regresa completa, fuerte y orgullosa,
+              reconociéndose como parte de un país que canta y resiste. Esta estación es un canto a la vida,
+              a la libertad y a la infancia que florece cuando está protegida y acompañada.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Mensaje central -->
+      <div class="vs-mensaje">
+        <div class="vs-card gradient">
+          <h3>Mensaje central</h3>
+          <p>
+            El recorrido de Sofía recuerda que cada niño y niña tiene derecho a crecer protegido, a decir
+            “mi cuerpo y mi vida es solo mío”, a expresar sus emociones y a imaginar sin límites. El arte
+            se convierte en camino de prevención, cuidado y empoderamiento, capaz de transformar la
+            vulnerabilidad en fuerza y de devolverle a la infancia su derecho más valioso: vivir con alegría.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Pie de página ====== -->
+  <footer class="site-footer">
     © 2025 Musicala · Todos los derechos reservados
   </footer>
 
