@@ -1,0 +1,268 @@
+/* ===========================
+   style.css – AlegreMente 2025
+   Mantiene tu estilo base y añade
+   la sección “El Viaje de Sofía”
+   =========================== */
+
+/* -------- Variables -------- */
+:root {
+  --primary: #007BFF;
+  --primary-dark: #0056b3;
+  --bg: #f7f7f9;
+  --text: #333;
+  --muted: #666;
+  --card: #fff;
+  --radius: 14px;
+  --shadow: 0 4px 14px rgba(0,0,0,0.1);
+
+  /* Sección Viaje de Sofía */
+  --vs-border: #eceff3;
+  --vs-muted: #60666d;
+  --vs-shadow: 0 10px 28px rgba(0,0,0,.06);
+  --vs-grad-a: #ffffff;
+  --vs-grad-b: #f8fbff;
+}
+
+/* -------- Reseteos útiles -------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* -------- Base -------- */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+/* -------- Header global -------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;                 /* espacio entre logos */
+  padding: 12px 25px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header .logo {
+  height: 60px;              /* controla altura sin cortar */
+  width: auto;
+  object-fit: contain;
+}
+
+/* -------- Contenedor principal -------- */
+.container {
+  max-width: 880px;
+  margin: 50px auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px 50px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--text);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+ul {
+  margin: 20px 0 30px 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* -------- Menú de enlaces externos -------- */
+.menu {
+  text-align: center;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.menu a {
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: transform .12s ease, background .3s ease, box-shadow .2s ease;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,123,255,.15);
+}
+
+.menu a:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,86,179,.22);
+}
+.menu a:focus-visible {
+  outline: 3px solid #bcd8ff;
+  outline-offset: 2px;
+}
+
+/* -------- Footer -------- */
+.site-footer {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin: 40px 0 10px;
+}
+
+/* =========================================================
+   Sección nueva: “El Viaje de Sofía”
+   (scope con prefijo vs- y #viaje-sofia para evitar conflictos)
+   ========================================================= */
+#viaje-sofia {
+  margin: 56px auto;
+  max-width: 1100px;
+  padding: 0 16px;
+}
+
+#viaje-sofia .wrap {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--vs-shadow);
+  overflow: hidden;
+  border: 1px solid var(--vs-border);
+}
+
+/* Header de la sección */
+#viaje-sofia .vs-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #fff;
+  border-bottom: 1px solid var(--vs-border);
+}
+#viaje-sofia .vs-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex: 0 0 44px;
+}
+#viaje-sofia .vs-titles h2 {
+  margin: 0;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+#viaje-sofia .vs-sub {
+  margin: 4px 0 0;
+  color: var(--vs-muted);
+  font-size: 14px;
+}
+
+/* Grid texto + imagen */
+#viaje-sofia .vs-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+  padding: 22px;
+}
+#viaje-sofia .vs-text {
+  line-height: 1.7;
+}
+#viaje-sofia .vs-text h3 {
+  margin: .2rem 0 .6rem 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--text);
+}
+#viaje-sofia .vs-text p {
+  color: #2a2f36;
+  text-align: justify;
+}
+
+/* Imagen y pie */
+#viaje-sofia .vs-image {
+  background: #fff;
+  border: 1px solid #eef1f5;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 0;
+}
+#viaje-sofia .vs-image img {
+  border-radius: 8px;
+}
+#viaje-sofia .vs-image figcaption {
+  color: var(--vs-muted);
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Escenas */
+#viaje-sofia .vs-escenas {
+  padding: 0 22px 22px;
+}
+#viaje-sofia .vs-escenas h3 {
+  margin: 6px 0 10px;
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+#viaje-sofia .vs-card {
+  background: #fff;
+  border: 1px solid #edf0f4;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+#viaje-sofia .vs-card ol {
+  margin: 0;
+  padding-left: 18px;
+}
+#viaje-sofia .vs-card li {
+  margin: 10px 0;
+  color: #2a2f36;
+}
+#viaje-sofia .vs-card b {
+  font-weight: 800;
+  color: #1f2328;
+}
+
+/* Mensaje central */
+#viaje-sofia .vs-mensaje {
+  padding: 0 22px 26px;
+}
+#viaje-sofia .vs-card.gradient {
+  background: linear-gradient(180deg, var(--vs-grad-a), var(--vs-grad-b));
+  border: 1px solid #e9f1ff;
+}
+#viaje-sofia .vs-card.gradient h3 {
+  margin: 0 0 6px;
+}
+
+/* -------- Responsivo -------- */
+@media (max-width: 960px) {
+  .container { padding: 28px 22px; margin: 34px auto; }
+  #viaje-sofia .vs-grid { grid-template-columns: 1fr; }
+  .site-header { gap: 12px; }
+  .site-header .logo { height: 50px; }
+}
+
+@media (max-width: 520px) {
+  .menu { grid-template-columns: 1fr; }
+  .container { padding: 24px 18px; }
+}
+
+/* -------- Impresión (limpio) -------- */
+@media print {
+  .site-header, .menu, .site-footer { display: none !important; }
+  .container, #viaje-sofia .wrap { box-shadow: none; border: none; }
+  body { background: #fff; }
+}
